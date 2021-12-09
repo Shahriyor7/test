@@ -1,8 +1,8 @@
 <?php
 ob_start();
-define('BEK_KODER','2133593243:AAFfVCgLPrHDNz8isAcAXFLCL5lzcwKjngA');
-$admin = "2101571142"; //admin id
-$adminuser = "Net_Seen_Support"; //admin user
+define('BEK_KODER','2110938851:AAGjrP_5bP1Wx8JaUukfM0160DAeNy4zkGM');
+$admin = "1005223082"; //admin id
+$adminuser = "SHAHRIYORBEK1"; //admin user
 $bot = "Net_seen_bot"; //bot useri
 $rek_channel = "Net_seen_news"; //rek kanal
 $pm_channel = "Net_seen_news"; //post kanal
