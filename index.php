@@ -26,25 +26,28 @@ $text = $message->text;
 //====================ᵗᶦᵏᵃᵖᵖ======================//
 if($text == "/start"){
    bot('sendmessage',[
-   "chat_id" => $cid,
-   "text" => "*Tezlikni bilish uchun* /speed'*ni bosing*",
-   "parse_mode"=>"Markdown",
-   "reply_to_message_id"=>$mid,
+   'chat_id' => $cid,
+   'text' => "*Tezlikni bilish uchun* /speed'*ni bosing*",
+   'parse_mode'=>"Markdown",
+   'reply_to_message_id'=>$mid,
                     ]);
 }
 if($text == "/speed"){
 $start_time = round(microtime(true) * 1000);
       $send=  bot('sendmessage', [
                 'chat_id' => $cid,
-                'text' =>"Tezlik:",
+                'text' =>"Yuklanmoqda...",
+                'parse_mode'=>"Markdown",
+                'reply_to_message_id'=>$mid,
             ])->result->message_id;
         
                     $end_time = round(microtime(true) * 1000);
                     $time_taken = $end_time - $start_time;
                     bot('editMessagetext',[
-                        "chat_id" => $cid,
-                        "message_id" => $send,
-                        "text" => "Tezlik: " . $time_taken . "ms",
+                        'chat_id' => $cid,
+                        'message_id' => $send,
+                        'text' => "Tezlik: " . $time_taken . "ms",
+                        'parse_mode'=>"Markdown",
                     ]);
 }
 ?>
