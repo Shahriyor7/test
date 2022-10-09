@@ -200,14 +200,4 @@ $start_time = round(microtime(true) * 1000);
                         'text' => "Tezlik: " . $time_taken . "ms",
                     ]);
 }
-if($text == "/time"){
- date_default_timezone_set('Asia/Tashkent');
- for ($i=1; $i <= 3600; $i++){
- bot(editMessage',[
-'chat_id' => $cid,
-'message_id' => $mid,
-'text' => date('H:i:s')]);
- sleep(1);
- }
- }
 ?>
