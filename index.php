@@ -29,12 +29,13 @@ $fid = $message->from->id;
 $cid = $message->chat->id;
 $text = $message->text;
 //====================ᵗᶦᵏᵃᵖᵖ======================//
-/*if($text == "/start"){
+if($text == "/start"){
    bot('sendmessage',[
    "chat_id" => $cid,
-   "text" => "Tezlik: " . $time_taken . "ms",
+   "text" => "*Tezlikni bilish uchun* /speed'*ni bosing*",
+   "parse_mode"=>"Markdown",
                     ]);
-}*/
+}
 if($text == "/speed"){
 $start_time = round(microtime(true) * 1000);
       $send=  bot('sendmessage', [
