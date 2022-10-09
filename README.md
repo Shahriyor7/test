@@ -1,2 +1,2 @@
-# test
-prosta test uchun
+# Test bot
+# prosta test uchun
