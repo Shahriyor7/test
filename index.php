@@ -16,15 +16,10 @@ function bot($method,$datas=[]){
     }
 }
  
- function sendaction($cid, $action){
- bot('sendchataction',[
- 'chat_id'=>$cid,
- 'action'=>$action
- ]);
- }
  //====================ᵗᶦᵏᵃᵖᵖ======================//
 $update = json_decode(file_get_contents('php://input'));
 $message = $update->message;
+$mid = $message->message_id;
 $fid = $message->from->id;
 $cid = $message->chat->id;
 $text = $message->text;
@@ -34,6 +29,7 @@ if($text == "/start"){
    "chat_id" => $cid,
    "text" => "*Tezlikni bilish uchun* /speed'*ni bosing*",
    "parse_mode"=>"Markdown",
+   "reply_to_message_id"=>$mid,
                     ]);
 }
 if($text == "/speed"){
