@@ -18,22 +18,39 @@ function bot($method,$datas=[]){
 
 $update = json_decode(file_get_contents('php://input'));
 $message = $update->message;
-$from_id = $message->from->id;
-$chat_id = $message->chat->id;
+$fid = $message->from->id;
+$cid = $message->chat->id;
 $text = $message->text;
-if(preg_match('/^\/([Ss]tart)/',$text)){
+
+if($text == "/start"){
+    bot('sendMessage',[
+	'chat_id'=>$cid,
+	'text'=>"🌍 *Botga xush kelibsiz*",
+	'parse_mode'=>"Markdown",
+	'reply_to_message_id'=>$mid,
+	'reply_markup'=>json_encode([
+	'inline_keyboard'=>[
+	[['text'=>"📚 Tarjima qilish","callback_data"=>"translate"]],
+	[['text'=>"👨‍💻 Dasturchi","url"=>"tg://user?id=1005223082"]]
+	]
+	])
+	]);
+exit();
+	}
+
+if($text == "/speed"){
 $start_time = round(microtime(true) * 1000);
       $send=  bot('sendmessage', [
-                'chat_id' => $chat_id,
+                'chat_id' => $cid,
                 'text' =>"Tezlik:",
             ])->result->message_id;
         
                     $end_time = round(microtime(true) * 1000);
                     $time_taken = $end_time - $start_time;
                     bot('editMessagetext',[
-                        'chat_id' => $chat_id,
+                        'chat_id' => $cid,
                         'message_id' => $send,
-                        'text' => "Tezlik:" . $time_taken . "ms",
+                        'text' => "Tezlik: " . $time_taken . "ms",
                     ]);
 }
 ?>
