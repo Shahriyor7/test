@@ -29,7 +29,7 @@ $fid = $message->from->id;
 $cid = $message->chat->id;
 $text = $message->text;
 //====================ᵗᶦᵏᵃᵖᵖ======================//
-id($text == "/start"){
+if($text == "/start"){
    bot('sendmessage',[
    "chat_id" => $cid,
    "text" => "Tezlik: " . $time_taken . "ms",
