@@ -21,30 +21,30 @@ function bot($method,$datas=[]){
     }
 }
  
- function sendaction($chat_id, $action){
+ function sendaction($cid, $action){
  bot('sendchataction',[
- 'chat_id'=>$chat_id,
+ 'chat_id'=>$cid,
  'action'=>$action
  ]);
  }
  //====================ᵗᶦᵏᵃᵖᵖ======================//
 $update = json_decode(file_get_contents('php://input'));
 $message = $update->message;
-$from_id = $message->from->id;
-$chat_id = $message->chat->id;
+$fid = $message->from->id;
+$cid = $message->chat->id;
 $text = $message->text;
 //====================ᵗᶦᵏᵃᵖᵖ======================//
-if(preg_match('/^\/([Ss]tart)/',$text)){
+if($text == "/speed"){
 $start_time = round(microtime(true) * 1000);
       $send=  bot('sendmessage', [
-                'chat_id' => $chat_id,
+                'chat_id' => $cid,
                 'text' =>"Tezlik:",
             ])->result->message_id;
         
                     $end_time = round(microtime(true) * 1000);
                     $time_taken = $end_time - $start_time;
                     bot('editMessagetext',[
-                        "chat_id" => $chat_id,
+                        "chat_id" => $cid,
                         "message_id" => $send,
                         "text" => "Tezlik: " . $time_taken . "ms",
                     ]);
