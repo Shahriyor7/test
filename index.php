@@ -36,7 +36,7 @@ if($text == "/speed"){
 $start_time = round(microtime(true) * 1000);
       $send=  bot('sendmessage', [
                 'chat_id' => $cid,
-                'text' =>"Yuklanmoqda...",
+                'text' =>"*Yuklanmoqda*...",
                 'parse_mode'=>"Markdown",
                 'reply_to_message_id'=>$mid,
             ])->result->message_id;
@@ -46,7 +46,7 @@ $start_time = round(microtime(true) * 1000);
                     bot('editMessagetext',[
                         'chat_id' => $cid,
                         'message_id' => $send,
-                        'text' => "Tezlik: " . $time_taken . "ms",
+                        'text' => "*Tezlik:* " *. $time_taken .* "*ms*",
                         'parse_mode'=>"Markdown",
                     ]);
 }
