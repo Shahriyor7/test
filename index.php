@@ -1,9 +1,4 @@
 <?php 
-/**
- *Author: Tilon
- *
- *Telegram : @TILON
- */
 $API_KEY = '1942366772:AAHlBQ-UMb_IbTsAPxBtOArTOPgEMVu2Epk';
 ##------------------------------##
 define('API_KEY',$API_KEY);
@@ -34,6 +29,12 @@ $fid = $message->from->id;
 $cid = $message->chat->id;
 $text = $message->text;
 //====================ᵗᶦᵏᵃᵖᵖ======================//
+id($text == "/start"){
+   bot('sendmessage',[
+   "chat_id" => $cid,
+   "text" => "Tezlik: " . $time_taken . "ms",
+                    ]);
+}
 if($text == "/speed"){
 $start_time = round(microtime(true) * 1000);
       $send=  bot('sendmessage', [
