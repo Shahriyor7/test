@@ -29,7 +29,7 @@ $from = file_get_contents("data/$cid.from");
 $to = file_get_contents("data/$cid.to");
 $step = file_get_contents("step/$cid.txt");
 $adminstep = file_get_contents("step/admin.txt");
-$API = json_decode(file_get_contents("https://shahriyor.clouduz.ru/translate.php?in=$from&out=$to&text=$text"));
+$API = json_decode(file_get_contents("https://m1807.myxvest.ru/Xosting/users/1005223082/host/API/translate.php?in=$from&out=$to&text=$text"));
 $tarjima=$API->translate;
 $matn=$API->text;
 
