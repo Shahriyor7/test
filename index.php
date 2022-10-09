@@ -25,6 +25,13 @@ $data = $update->callback_query->data;
 $fid = $message->from->id;
 $cid = $message->chat->id;
 $text = $message->text;
+$from = file_get_contents("data/$cid.from");
+$to = file_get_contents("data/$cid.to");
+$step = file_get_contents("step/$cid.txt");
+$adminstep = file_get_contents("step/admin.txt");
+$API = json_decode(file_get_contents("https://shahriyor.clouduz.ru/translate.php?in=$from&out=$to&text=$text"));
+$tarjima=$API->translate;
+$matn=$API->text;
 
 if($text == "/start"){
     bot('sendMessage',[
@@ -139,6 +146,45 @@ file_put_contents("step/$ccid.txt","uz");
 	]);
 exit();
     }
+if($step == "ru" and $text !== "/start"){
+file_put_contents("data/trans.txt",$trans+1);
+	bot('sendmessage',[
+	'chat_id'=>$cid,
+	'text'=>"✏️ *Siz yuborgan soʻz - $ttext\n🇷🇺 Tarjimasi - $translate*",
+	'parse_mode'=>"Markdown",
+	'reply_to_message_id'=>$mid,
+	]);
+unlink("step/$cid.txt");
+unlink("data/$cid.from");
+unlink("data/$cid.to");
+exit();
+	}
+if($step == "en" and $text !== "/start"){
+unlink("step/$cid.txt");
+unlink("data/$cid.from");
+unlink("data/$cid.to");
+file_put_contents("data/trans.txt",$trans+1);
+	bot('sendmessage',[
+	'chat_id'=>$cid,
+	'text'=>"✏️ *Siz yuborgan soʻz - $ttext\n🇺🇸 Tarjimasi - $translate*",
+	'parse_mode'=>"Markdown",
+	'reply_to_message_id'=>$mid,
+	]);
+exit();
+	}
+if($step == "uz" and $text !== "/start"){
+unlink("step/$cid.txt");
+unlink("data/$cid.from");
+unlink("data/$cid.to");
+file_put_contents("data/trans.txt",$trans+1);
+	bot('sendmessage',[
+	'chat_id'=>$cid,
+	'text'=>"✏️ *Siz yuborgan soʻz - $ttext\n🇺🇿 Tarjimasi - $translate*",
+	'parse_mode'=>"Markdown",
+	'reply_to_message_id'=>$mid,
+	]);
+exit();
+	}
 if($text == "/speed"){
 $start_time = round(microtime(true) * 1000);
       $send=  bot('sendmessage', [
