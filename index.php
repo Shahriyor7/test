@@ -1,5 +1,5 @@
 <?php 
-$API_KEY = '1929420071:AAG1x1NiqTsUZrtpmNen54KoIh4aeMbf9T4';
+$API_KEY = '5501534828:AAE_NXbaBvrMPO6R7WHlvUhDsvJ280Gnz9A';
 ##------------------------------##
 define('API_KEY',$API_KEY);
 function bot($method,$datas=[]){
